@@ -1,4 +1,4 @@
-file(GLOB SOURCES "*.cpp" "*.hpp")
+file(GLOB SOURCES "*.cpp" "*.hpp" "*.h")
 # 得到当前文件夹的名字
 get_dirctory_name(exeName) 
 add_executable(
@@ -11,5 +11,9 @@ target_include_directories(${exeName}
     ${CMAKE_CURRENT_LIST_DIR}
   )
 
+target_link_libraries(
+  ${exeName}
+  GTest::GTest GTest::Main
+)
 # 将生成的target放入到tests/下
 set_target_properties(${exeName} PROPERTIES FOLDER "official/")
