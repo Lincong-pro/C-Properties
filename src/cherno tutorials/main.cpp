@@ -3,6 +3,7 @@
 #include "multi-array.hpp"
 #include "sortAlgorithm.hpp"
 #include "type_punning.hpp"
+#include "union.hpp"
 int main(int argc,char* argv[]) {
 	//TestTime();
 	//AdvanceTestTime();
@@ -14,8 +15,12 @@ int main(int argc,char* argv[]) {
 	//CreateArray(5000);
 	//Create2Array(5000);// kill more time
 
-	TypePunning1();
+
+	//TypePunning1();
+
+	testUnion();
 
 	::testing::InitGoogleTest(&argc, argv);
+
 	return RUN_ALL_TESTS();
 }
