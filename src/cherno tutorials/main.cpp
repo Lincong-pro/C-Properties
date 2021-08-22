@@ -1,9 +1,11 @@
-#pragma 
 #include "thread.hpp"
 #include "multi-array.hpp"
 #include "sortAlgorithm.hpp"
 #include "type_punning.hpp"
 #include "union.hpp"
+#include "virtualDestructor.hpp"
+#include "cast.hpp"
+#include "decltype.hpp"
 int main(int argc,char* argv[]) {
 	//TestTime();
 	//AdvanceTestTime();
@@ -18,8 +20,14 @@ int main(int argc,char* argv[]) {
 
 	//TypePunning1();
 
-	testUnion();
+	//testUnion();
 
+	//MemoryLeak();
+
+	//testStaticCast();
+
+	testMain1();
+    testMain2();
 	::testing::InitGoogleTest(&argc, argv);
 
 	return RUN_ALL_TESTS();
