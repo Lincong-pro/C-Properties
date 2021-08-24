@@ -1,7 +1,7 @@
 # 设置该变量的原因是可以让该层测试使用定时器
 set(cherno "${CMAKE_SOURCE_DIR}/SRC/cherno tutorials")
 
-file(GLOB SOURCES "*.cpp" "*.hpp")
+file(GLOB SOURCES "*.cpp" "*.hpp" "*.h")
 # 得到当前文件夹的名字
 get_dirctory_name(exeName) 
 add_executable(

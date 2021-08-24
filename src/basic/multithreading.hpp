@@ -132,3 +132,87 @@ void testMultiThreadPrint() { Timing timer;//开始记时
 }
 
 void printDivider() { std::cout << "==========================================\n"; }
+
+
+
+/**
+ * C++ thread参数传送内存分析
+ */
+
+class Lin {
+ public:
+  Lin();
+  Lin(const char *scope) {
+    this->scope = scope;
+    std::cout << "Create " +std::string(scope) +" Lin object in copy constructor !\n";
+  }
+  ~Lin();
+  Lin(const Lin &lin1) {
+    this->scope = "local";
+    std::cout << "Create " + std::string(scope) +
+                     " Lin object in copy constructor!\n";
+  }
+
+ public:
+  const char *scope;
+};
+
+Lin::Lin() {
+  this->scope = "local";
+  std::cout<< "Create " + std::string(scope) + " Lin object!\n";
+}
+
+Lin::~Lin() { std::cout << "Release " + std::string(scope) + " Lin object!\n"; }
+
+//测试引用
+void CopyLin(Lin &lin1) {
+    // do nothing
+    // 值传递的时候创建一个对象赋值给局部变量
+  /************************************************************************/
+  /* 意味着局部变量值传递释放一次，全局变量释放一次，参数拷贝释放一次                */
+  /************************************************************************/
+    using namespace std::literals::chrono_literals;
+    std::this_thread::sleep_for(1s);
+    printDivider();
+    std::cout << lin1.scope << "\n";
+}
+
+//测试指针
+void CopyLinPointer(Lin *lin1) {
+  // do nothing
+  // 值传递的时候创建一个对象赋值给局部变量
+  /************************************************************************/
+  /* 意味着局部变量值传递释放一次，全局变量释放一次，参数拷贝释放一次 */
+  /************************************************************************/
+  using namespace std::literals::chrono_literals;
+  std::this_thread::sleep_for(1s);
+  printDivider();
+  std::cout << lin1->scope << "\n";
+}
+void CopyStringPointer(std::string *str) {
+  // do nothing
+  // 值传递的时候创建一个对象赋值给局部变量
+  /************************************************************************/
+  /* 意味着局部变量值传递释放一次，全局变量释放一次，参数拷贝释放一次 */
+  /************************************************************************/
+  using namespace std::literals::chrono_literals;
+  std::this_thread::sleep_for(1s);
+  printDivider();
+  std::cout << *str << "\n";
+}
+
+void testMemoryOperation() {
+  std::unique_ptr<std::thread> th=nullptr;//初始化线程但不进行函数指定，便于控制
+  std::thread th1;
+  {
+    //Lin lin1("global");
+    /*th = std::make_unique<std::thread>(CopyLin, lin1);*/
+    //th1 = std::thread(CopyLin,lin1);
+    //CopyLinPointer(&lin1);
+    std::string str1("lincong");
+    th = std::make_unique<std::thread>(CopyStringPointer, &str1);
+  }
+  //等待子线程完成任务，此时lin1对象已经传递进入
+  th->join();
+  //th1.join();
+}
