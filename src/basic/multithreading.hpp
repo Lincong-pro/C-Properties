@@ -12,7 +12,7 @@ void print1(int n, const std::string &str) {
   std::cout << "Printing integer: " << n << std::endl;
   std::cout << "Printing string: " << str << std::endl;
   volatile int cnt = 0; // 声明一个不能优化的变量，即下面for循环的变量是不能优化的
-  for (int i = 0;i<1000000000;++i)
+  for (int i = 0;i<10000000000;++i)
   {
     cnt += 1;
   }
@@ -67,12 +67,15 @@ void testThreadPrintAsync() {
    */
   
   std::thread t2(print2, 10, "Educative.blog");
+  std::thread t3(print2, 10, "Educative.blog");
   t1.join();  //该函数所在的线程结束的前提就是t1线程结束，如果没有这一句就会报错
   //主线程在此处等待t1完成
   std::cout << "t1 finished\n";
   t2.join();
   //主线程在此处等待t2完成，如果已经完成直接跳过进入下面的语句
   std::cout << "t2 finished\n";
+  t3.join();
+  std::cout << "t3 finished\n";
 }
 
 // 以守护线程的方式进行运行（更高效）-- 但是detach线程是不可以操作主线程数据的

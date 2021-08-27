@@ -1,6 +1,7 @@
 #include "variatic.hpp"
 #include "xthread.hpp"
 #include "_promise.h"
+#include "functor.h"
 int main() { 
     //variaticTemplate1();
 
@@ -13,11 +14,12 @@ int main() {
     //testSinglePrint();
     //printDivider();
     //testThreadPrintJoinEfficiency();
-
     //testMemoryOperation();
-
+    
     //TestSubThread();
 
-    testPromise1();
+    //testPromise1();
+
+    testThreadRef();
     return 0; 
 }

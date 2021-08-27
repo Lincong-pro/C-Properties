@@ -5,6 +5,7 @@
 #include "union.hpp"
 #include "virtualDestructor.hpp"
 #include "cast.hpp"
+#include "_move.h"
 int main(int argc,char* argv[]) {
 	//TestTime();
 	//AdvanceTestTime();
@@ -24,6 +25,8 @@ int main(int argc,char* argv[]) {
 	//MemoryLeak();
 
 	//testStaticCast();
+
+	testString();
 
 	::testing::InitGoogleTest(&argc, argv);
 
