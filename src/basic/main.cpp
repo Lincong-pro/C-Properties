@@ -1,25 +1,32 @@
-#include "variatic.hpp"
-#include "xthread.hpp"
 #include "_promise.h"
 #include "functor.h"
-int main() { 
-    //variaticTemplate1();
-
+#include "mytemplate.h"
+#include "xthread.hpp"
+int main() {
+    // variaticTemplate1();
 
     //线程
-    //testThreadPrintSync();
-    //printDivider();
-    //testThreadPrintAsync();
-    //printDivider();
-    //testSinglePrint();
-    //printDivider();
-    //testThreadPrintJoinEfficiency();
-    //testMemoryOperation();
-    
-    //TestSubThread();
+    // testThreadPrintSync();
+    // printDivider();
+    // testThreadPrintAsync();
+    // printDivider();
+    // testSinglePrint();
+    // printDivider();
+    // testThreadPrintJoinEfficiency();
+    // testMemoryOperation();
 
-    //testPromise1();
+    // TestSubThread();
 
-    testThreadRef();
-    return 0; 
+    // testPromise1();
+
+    // testThreadRef();
+
+    // testTemplateDeduce();
+
+    // testTemplateOverride();
+
+    // testSpecializition();
+
+    testFunc();
+    return 0;
 }
