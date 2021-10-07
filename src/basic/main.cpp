@@ -1,7 +1,10 @@
 #include "_promise.h"
 #include "functor.h"
 #include "mytemplate.h"
+#include "tuple.h"
+#include "vector_insert.hpp"
 #include "xthread.hpp"
+#include <string>
 int main() {
     // variaticTemplate1();
 
@@ -27,6 +30,10 @@ int main() {
 
     // testSpecializition();
 
-    testFunc();
+    // testFunc();
+
+    // Tuple<int, double, std::string> tuple1(12, 44.33, std::string("hello world"));
+
+    testVectorInsert();
     return 0;
 }

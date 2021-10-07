@@ -14,13 +14,20 @@ if(MSVC)
     "${CMAKE_CXX_FLAGS} /bigobj /MP /wd4005 /wd4996 /wd4819 /wd4251 /wd4267 /wd4244 /wd4275 /wd4530 /wd4334 /wd4018 /openmp"
     )
   add_definitions(-D_ENABLE_EXTENDED_ALIGNED_STORAGE -DNOMINMAX)
+  # 该命令主要是用于C/C++命令行
   add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
   add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
+  add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:-openmp:llvm>")
+  add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:-openmp:experimental>")
 endif(MSVC)
 
 
 enable_testing()
 find_package(GTest REQUIRED)
+# OpenMP Support
+find_package(OpenMP REQUIRED)
+
+
 # 关闭cmake预定义的文件夹
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
