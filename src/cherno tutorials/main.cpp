@@ -1,5 +1,6 @@
 #include "_move.h"
 #include "cast.hpp"
+#include "lvalue&&rvalue.h"
 #include "multi-array.hpp"
 #include "selfarray.h"
 #include "sortAlgorithm.hpp"
@@ -27,7 +28,10 @@ int main(int argc, char *argv[]) {
     // testStaticCast();
 
     // testString();
-    testArray();
+
+    // testArray();
+    // testLvalueAndRvalueTransform();
+    moveTest();
 
     ::testing::InitGoogleTest(&argc, argv);
 

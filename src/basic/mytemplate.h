@@ -85,3 +85,24 @@ void testFunc() {
     std::cout << addProxy(2, 3, &sub) << "\n";
     nonTemplateParam<char *, 110>();
 }
+
+/*模板中的模板*/
+template <typename T, template <class> class Container> class XCIs {
+private:
+    Container<T> c; //声明一个容器
+
+public:
+    XCIs() { // constructor
+        for (size_t i = 0; i < length; i++) {
+            c.insert(c.end(), T());
+        }
+        output_static_data(T());
+        Container<T>;
+        c1(c);
+        Container<T> c2(std::move(c));
+        c1.swap(c2);
+    }
+    ~XCIs();
+
+private:
+};
